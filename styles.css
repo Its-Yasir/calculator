@@ -1,0 +1,235 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+button{
+  cursor: pointer;
+  border-width: 0px;
+}
+:root{
+  --base-color : #3b4664;
+  --answer-box : #181f32;
+  --button-box : #252c46;
+  --button-color:#eae3db;
+  --extra-btn  : #31467e;
+}
+.light-mode{
+  --base-color   :   #d7d7d7;
+  --answer-box   :   #4d4d4d;
+  --button-box   :   #a4a4a4;
+  --button-color :   #1e1e1e;
+  --extra-btn    :   #1b3b92;
+}
+body{
+  background-color: var(--base-color);
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+.calBody{
+  width: 500px;
+  background-color: transparent;
+  height: 700px;
+  margin-top: 50px;
+}
+.top{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.top .themeToggle{
+  width: 50px;
+  height: 50px;
+  background-color: var(--answer-box);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.answerBox{
+  background-color: var(--answer-box);
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+}
+.buttonBox{
+  width: 100%;
+  height: 400px;
+  background-color: var(--button-box);
+  border-radius: 10px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+button{
+  font-size: 1.7rem;
+  border-radius: 10px;
+  font-weight: bolder;
+  color: var(--button-box);
+}
+.number{
+  background-color: var(--button-color);
+}
+.operation{
+  background-color: var(--button-color);
+}
+.del{
+  background-color: var(--extra-btn);
+  color: var(--button-color);
+  color: rgb(215, 215, 215);
+}
+.reset{
+  background-color: var(--extra-btn);
+  color: var(--button-color);
+  grid-area: 5 / 1 / 5 / 3 ;
+  color: rgb(215, 215, 215);
+}
+.equal{
+  background-color: #d13f30;
+  grid-area: 5 / 3 / 5 / 5;
+}
+.number:hover{
+  background-color: white;
+}
+.operation:hover{
+  background-color: white;
+}
+.equal:hover{
+  background-color: #e4321f;
+}
+.del:hover{
+  background-color: #092aa1;
+}
+.reset:hover{
+  background-color: #092aa1;
+}
+.grey{
+  width: 100%;
+  text-align: right;
+  color: rgb(211, 211, 211);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: right;
+}
+.black{
+  width: 100%;
+  text-align: right;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+}
+@media screen and (max-width:570px) {
+  .calBody{
+    width: 95vw;
+    height: 80vh;
+  }
+  .buttonBox{
+    height: 60%;
+  }
+}
+
+
+
+
+/*! STYLES FOR HISTORY SECTION */
+
+.history{
+  width: auto;
+  height: 75px;
+  overflow-y: scroll;
+  padding: 20px 30px;
+  text-align: center;
+  position: fixed;
+  background-color: var(--answer-box);
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  border-radius: 10px;
+  scrollbar-width: none;         /* Firefox */
+}
+
+.history:hover{
+  animation: none;
+}
+.history .historyText{
+  display: flex;
+  align-items: center;
+  color: white;
+  width: max-content;
+  font-weight: normal;
+  column-gap: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.historyText h1{
+  display: none;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+.historyText:hover h1{
+  display: inline;
+}
+.histories{
+  display: none;
+}
+.historyn{
+  padding: 10px;
+  text-align: left;
+  color: rgb(196, 196, 196);
+  border: 2px solid grey;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  justify-content: space-between;
+}
+.historyShow{
+  display: flex;
+}
+.delHistory{
+  background-color: rgb(204, 53, 53);
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.delHistory:hover{
+  background-color: rgb(242, 23, 23);
+}
+.history1{
+  border-top-color: grey;
+}
+.historyValues{
+  width: max-content;
+}
+
+@media screen and (max-width: 700px) {
+  .history{
+    bottom: 20px;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+}
+.op{
+  margin-left: 5px;
+}
+.history h3{
+  color: white;
+  font-weight: normal;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A simple Calculator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+  <link rel="stylesheet" href="assets/icons.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="assets/iconoir--calculator (1).svg" type="image/x-icon">
+</head>
+<body class="dark-mode">
+  <div class="calBody">
+    <div class="top">
+      <span class="iconoir--calculator"></span>
+      <span class="iconoir--calculator-black"></span>
+      <div class="themeToggle">
+        <span class="material-symbols-light--light-mode-rounded"></span>
+        <span class="material-symbols-light--dark-mode"></span>
+      </div>
+    </div>
+    <div class="answerBox">
+      <div class="grey">
+        <div class="value">123</div>
+        <div class="op">X</div>
+      </div>
+      <div class="black">12345</div>
+    </div>
+    <div class="buttonBox">
+      <button class="btn7 number">7</button>
+      <button class="btn8 number">8</button>
+      <button class="btn9 number">9</button>
+      <button class="del">DEL</button>
+      <button class="btn4 number">4</button>
+      <button class="btn5 number">5</button>
+      <button class="btn6 number">6</button>
+      <button class="operation add">+</button>
+      <button class="btn1 number">1</button>
+      <button class="btn2 number">2</button>
+      <button class="btn3 number">3</button>
+      <button class="operation sub">-</button>
+      <button class="decimal number">.</button>
+      <button class="btn0 number">0</button>
+      <button class="operation div">/</button>
+      <button class="operation mul">X</button>
+      <button class="reset">RESET</button>
+      <button class="equal">=</button>
+    </div>
+  </div>
+
+  <div class="history" title="Show History" onclick="
+  showHistory();
+  forSmallDevices();
+  ">
+    <div class="historyText">
+      <h1>History</h1>
+      <span class="fluent-color--history-16"></span>
+      <span class="charm--cross"></span>
+    </div>
+    <div class="histories">
+      <div class="history1 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+      <div class="history2 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+      <div class="history3 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+      <div class="history3 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+      <div class="history4 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+      <div class="history5 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+      <div class="history5 historyn">
+        <div class="calculation">
+          <div class="historyValues">123 X 456</div>
+          <div class="historyAns">=123456</div>
+        </div>
+        <div class="delHistory" title="Delete this from history">
+          <span class="material-symbols--delete"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

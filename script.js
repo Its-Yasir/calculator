@@ -52,6 +52,7 @@ function closeHistory(){
 document.addEventListener('click',function (event){
   if(!history.contains(event.target)  && !event.target.closest('.delHistory')){
     closeHistory();
+    saveHistoryToLocal();
   }
 })
 function forSmallDevices(){
@@ -262,22 +263,24 @@ function displayHistory(){
           <div class="historyValues">${item.big} ${item.op} ${item.small}</div>
           <div class="historyAns">=${item.ans}</div>
         </div>
-        <div class="delHistory delHistory${index}" title="Delete this from history">
+        <div class="delHistory delHistory${index}" data-id="${index}" title="Delete this from history">
           <span class="material-symbols--delete"></span>
         </div>
       </div>
     `;
     // Inject HTML
     histories.insertAdjacentHTML('beforeend', html);
-
-    // Attach event listener after the element is in the DOM
-    document.querySelector(`.delHistory${index}`).addEventListener('click', () => {
-      storedHistory.splice(index, 1);
-      displayHistory();
-    });
   });
+  document.querySelectorAll('.delHistory').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const id = Number(btn.dataset.id);  // get the correct index
+    storedHistory.splice(id, 1);        // delete the correct item
+    saveHistoryToLocal();               // save updated history
+    displayHistory();                   // re-render
+  });
+});
 }
-
 displayHistory();
 function saveHistoryToLocal() {
   localStorage.setItem('history', JSON.stringify(storedHistory));
@@ -289,6 +292,5 @@ function loadHistoryFromLocal() {
     displayHistory();
   }
 }
-loadHistoryFromLocal();
-saveHistoryToLocal();
+window.addEventListener('load', loadHistoryFromLocal);
 

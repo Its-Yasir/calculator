@@ -7,7 +7,7 @@ const sun = document.querySelector('.material-symbols-light--light-mode-rounded'
 const histories = document.querySelector('.histories');
 const history = document.querySelector('.history');
 const historyText = document.querySelector('.historyText h1');
-bodyElement.addEventListener('load', changeLogo());
+window.addEventListener('load', changeLogo());
 
 themeToggleBtn.addEventListener('click', () => {
   if (bodyElement.classList.contains('dark-mode')) {
@@ -50,7 +50,7 @@ function closeHistory(){
   }
 }
 document.addEventListener('click',function (event){
-  if(!history.contains(event.target)){
+  if(!history.contains(event.target)  && !event.target.closest('.delHistory')){
     closeHistory();
   }
 })
@@ -72,6 +72,7 @@ const js_btn1        = document.querySelector('.btn1');
 const js_btn2        = document.querySelector('.btn2');
 const js_btn3        = document.querySelector('.btn3');
 const js_btn4        = document.querySelector('.btn4');
+const js_btn5        = document.querySelector('.btn5');
 const js_btn6        = document.querySelector('.btn6');
 const js_btn7        = document.querySelector('.btn7');
 const js_btn9        = document.querySelector('.btn9');
@@ -99,6 +100,7 @@ function updateSmallValue(){   //? update small value in small text
   js_small_value.textContent = smallValue;
 }
 function changeBigValue(num){ //? fun for getting num value for big text
+  if(num === '.' && bigValue.includes('.')) return;
   if(bigValue == '0' && bigValue.length<=20){
     bigValue = num
   }
@@ -146,6 +148,7 @@ js_btn1.addEventListener('click', () => changeBigValue('1'));
 js_btn2.addEventListener('click', () => changeBigValue('2'));
 js_btn3.addEventListener('click', () => changeBigValue('3'));
 js_btn4.addEventListener('click', () => changeBigValue('4'));
+js_btn5.addEventListener('click', () => changeBigValue('5'));
 js_btn6.addEventListener('click', () => changeBigValue('6'));
 js_btn7.addEventListener('click', () => changeBigValue('7'));
 js_btn8.addEventListener('click', () => changeBigValue('8'));
@@ -154,7 +157,7 @@ js_decimal.addEventListener('click', () => changeBigValue('.'));
 js_reset.addEventListener('click',()=>{resetAllValues()});
 js_add.addEventListener('click', ()=> {updateOperation('+')});
 js_sub.addEventListener('click', ()=> {updateOperation('-')});
-js_mul.addEventListener('click', ()=> {updateOperation('*')});
+js_mul.addEventListener('click', ()=> {updateOperation('X')});
 js_div.addEventListener('click', ()=> {updateOperation('/')});
 js_equal.addEventListener('click', ()=>{calculateAnswerEqual()})
 
@@ -169,6 +172,7 @@ document.addEventListener('keydown', function(event) {
 
   // Optional: Handle other keys like + - * / . and Enter
   if (key === '.') {
+    if(key === '.' && bigValue.includes('.')) return;
     changeBigValue(key);
   } else if (key === '+') {
     updateOperation('+')
@@ -208,7 +212,12 @@ function calculateAnswerEqual(){
     answer = Number(bigValue) * Number(smallValue);
   }
   else if(operation == '/'){
-    answer = Number(bigValue) / Number(smallValue);
+    if(bigValue === '0') {
+      answer = 'Cannot divide by 0'; // <--- NEW SAFETY LINE
+    } else {
+      answer = Number(smallValue) / Number(bigValue);
+    }
+    answer = Number(smallValue) / Number(bigValue);
   }
   else if (operation == ''){
     answer = (smallValue == '')?bigValue:smallValue;
@@ -233,9 +242,8 @@ function calculateAnswerEqual(){
     displayHistory();
     saveHistoryToLocal();
   }
-  updateHistory();
-  console.log(storedHistory);
   displayAnswer();
+  updateHistory();
 }
 
 let storedHistory = [];
@@ -270,7 +278,6 @@ function displayHistory(){
   });
 }
 
-bodyElement.addEventListener('load', displayHistory())
 displayHistory();
 function saveHistoryToLocal() {
   localStorage.setItem('history', JSON.stringify(storedHistory));

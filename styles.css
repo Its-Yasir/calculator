@@ -1,7 +1,11 @@
 html {
   touch-action: manipulation;
 }
-
+* {
+  user-select: none;
+  -webkit-user-select: none; /* For Safari */
+  -webkit-touch-callout: none; /* Prevent iOS copy/paste popup */
+}
 *{
   padding: 0;
   margin: 0;

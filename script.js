@@ -243,8 +243,9 @@ function calculateAnswerEqual(){
     displayHistory();
     saveHistoryToLocal();
   }
-  displayAnswer();
   updateHistory();
+  displayAnswer();
+  console.log(storedHistory)
 }
 
 let storedHistory = [];
@@ -257,10 +258,11 @@ function displayHistory(){
   }
 
   storedHistory.forEach((item, index) => {
+    //console.log(storedHistory)
     const html = `
       <div class="history${index} historyn">
         <div class="calculation">
-          <div class="historyValues">${item.big} ${item.op} ${item.small}</div>
+          <div class="historyValues">${item.small} ${item.op} ${item.big}</div>
           <div class="historyAns">=${item.ans}</div>
         </div>
         <div class="delHistory delHistory${index}" data-id="${index}" title="Delete this from history">
@@ -269,6 +271,7 @@ function displayHistory(){
       </div>
     `;
     // Inject HTML
+    //console.log(html)
     histories.insertAdjacentHTML('beforeend', html);
   });
   document.querySelectorAll('.delHistory').forEach((btn) => {
@@ -293,4 +296,3 @@ function loadHistoryFromLocal() {
   }
 }
 window.addEventListener('load', loadHistoryFromLocal);
-

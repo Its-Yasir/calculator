@@ -2,9 +2,16 @@ html {
   touch-action: manipulation;
 }
 * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
-  -webkit-user-select: none; /* For Safari */
-  -webkit-touch-callout: none; /* Prevent iOS copy/paste popup */
+
+  -webkit-touch-callout: none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  touch-action: manipulation;
 }
 *{
   padding: 0;
